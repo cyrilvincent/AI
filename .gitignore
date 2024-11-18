@@ -1,0 +1,9 @@
+*.zip
+*.rar
+*.large.*
+large
+*ckpt*.*
+*.h5
+*.env
+.idea
+**/venv/**
