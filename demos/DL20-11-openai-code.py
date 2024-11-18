@@ -3,7 +3,7 @@ from openai import OpenAI
 with open("data/chatgpt/openai.env") as f:
     key = f.read()
 
-with open("DL08-06-mlp.py") as f:
+with open("DL20-11-openai-code.py") as f:
     text = f.read()
 
 print(text)
