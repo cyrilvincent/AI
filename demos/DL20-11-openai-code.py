@@ -10,9 +10,11 @@ print(text)
 
 client = OpenAI(api_key=key)
 
+nb = 5
+
 completion = client.chat.completions.create(model="gpt-3.5-turbo",
     messages=[
-        {"role": "system", "content": "Voici un code Python, merci de me l'expliquer de manière concise"},
+        {"role": "system", "content": f"Voici un code Python, merci de me l'expliquer de manière concise, en {nb} points maximum, au format json"},
         {"role": "user", "content": text}
     ]
 )

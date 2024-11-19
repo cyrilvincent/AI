@@ -12,7 +12,7 @@ client = OpenAI(api_key=key)
 
 completion = client.chat.completions.create(model="gpt-3.5-turbo",
     messages=[
-        {"role": "system", "content": "Fais moi un résumé en 5 parties de ce texte"},
+        {"role": "system", "content": "Fais moi un résumé en 5 parties de ce texte, au format json"},
         {"role": "user", "content": text}
     ]
 )

@@ -24,10 +24,10 @@ scaler.fit(xtrain)
 xtrain = scaler.transform(xtrain)
 xtest = scaler.transform(xtest)
 
-#model = nn.KNeighborsClassifier(n_neighbors=3)
-# model = rf.RandomForestClassifier()
+# model = nn.KNeighborsClassifier(n_neighbors=3)
+model = rf.RandomForestClassifier()
 # model = svm.SVC(C=1.0, kernel="linear")
-model = neural.MLPClassifier(hidden_layer_sizes=(30,30,30,30,30,30,30,30))
+# model = neural.MLPClassifier(hidden_layer_sizes=(30,30,30,30,30,30,30,30))
 model.fit(xtrain, ytrain)
 predicted = model.predict(xtest)
 score = model.score(xtest, ytest)
@@ -36,9 +36,9 @@ print(score)
 with open(f"data/breast-cancer/rf-{score*100:.2f}.pickle", "wb") as f:
     pickle.dump((scaler, model), f)
 
-# plt.bar(x.columns, model.feature_importances_)
-# plt.xticks(rotation=45)
-# plt.show()
+plt.bar(x.columns, model.feature_importances_)
+plt.xticks(rotation=45)
+plt.show()
 
 # pickle.dump((x,y), f)
 # x, y = pickle.load(f)
@@ -49,11 +49,11 @@ xsimple = scaler.transform(xsimple)
 predicted = model.predict(xsimple)
 print(predicted)
 
-# from sklearn.tree import export_graphviz
-#
-# export_graphviz(model.estimators_[0],
-#                 out_file="data/breast-cancer/tree.dot",
-#                 feature_names=x.columns,
-#                 class_names=["0", "1"],
-#                 )
+from sklearn.tree import export_graphviz
+
+export_graphviz(model.estimators_[0],
+                out_file="data/breast-cancer/tree.dot",
+                feature_names=x.columns,
+                class_names=["0", "1"],
+                )
 
